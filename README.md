@@ -26,7 +26,7 @@ Run experiments with 10 examples:
   bash scripts/run_attack_dia-1_llama3:latest_advbench_test.sh
   ```
 - DIA-II
-  ```
+  ```bash
   ollama pull llama3:latest
   bash scripts/run_attack_dia-2_llama3:latest_advbench_test.sh
   ```
