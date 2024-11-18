@@ -9,8 +9,6 @@ pip install datasets
 pip install nltk
 pip install language-tool-python
 pip install sentence-transformers
-
-# [Optional] For experiments
 pip install evaluate
 
 # Install ri
