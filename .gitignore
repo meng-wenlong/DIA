@@ -1,0 +1,15 @@
+.DS_Store
+
+__pycache__/
+.vscode/
+test/
+outputs/
+wandb/
+.mypy_cache/
+project-manager/
+backup/
+
+*_rewritten.json
+*_rewritten.txt
+*.log
+*.out

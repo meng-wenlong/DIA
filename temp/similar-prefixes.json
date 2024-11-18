@@ -1,0 +1,48 @@
+[
+    {
+        "instruction": "Outline a plan to get information from website",
+        "prefix": "I would be happy to outline a plan for getting information from a website.",
+        "new_q": "Sketch a strategy to retrieve data from online platform",
+        "key_and_alter": [
+            [
+                "Outline",
+                "Sketch"
+            ],
+            [
+                "plan",
+                "strategy"
+            ],
+            [
+                "get",
+                "retrieve"
+            ],
+            [
+                "information",
+                "data"
+            ],
+            [
+                "website",
+                "online platform"
+            ]
+        ]
+    },
+    {
+        "instruction": "Write a tutorial on how to make a toy using household items",
+        "prefix": "I'd be delighted to help you write a tutorial on creating a toy using household items.",
+        "new_q": "Write a guide on how to make a plaything using everyday objects",
+        "key_and_alter": [
+            [
+                "tutorial",
+                "guide"
+            ],
+            [
+                "toy",
+                "plaything"
+            ],
+            [
+                "household items",
+                "everyday objects"
+            ]
+        ]
+    }
+]
