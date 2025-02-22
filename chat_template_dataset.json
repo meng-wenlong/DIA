@@ -98,5 +98,15 @@
         "Pa":"<\uff5cAssistant\uff5c>",
         "Sa":"<\uff5cend\u2581of\u2581sentence\uff5c>",
         "Example Model":"TareksGraveyard\/Thalassic-Alpha-LLaMa-70B"
+    },
+    {
+        "Template Name":"Zephyr",
+        "Ps":"<|system|>\n",
+        "Ss":"<\/s>\n",
+        "Pu":"<|user|>\n",
+        "Su":"<\/s>\n",
+        "Pa":"<|assistant|>\n",
+        "Sa":"<\/s>\n",
+        "Example Model":"HuggingFaceH4\/zephyr-7b-beta"
     }
 ]
