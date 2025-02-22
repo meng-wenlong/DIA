@@ -1,0 +1,102 @@
+[
+    {
+        "Template Name":"ChatML",
+        "Ps":"<|im_start|>system\n",
+        "Ss":"<|im_end|>\n",
+        "Pu":"<|im_start|>user\n",
+        "Su":"<|im_end|>\n",
+        "Pa":"<|im_start|>assistant\n",
+        "Sa":"<|im_end|>\n",
+        "Example Model":"Qwen\/Qwen2.5-7B-Instruct"
+    },
+    {
+        "Template Name":"Mistral",
+        "Ps":"[SYSTEM_PROMPT] ",
+        "Ss":"[\/SYSTEM_PROMPT]",
+        "Pu":"[INST] ",
+        "Su":"[\/INST]",
+        "Pa":" ",
+        "Sa":"<\/s>",
+        "Example Model":"mistralai\/Mistral-Large-Instruct-2411"
+    },
+    {
+        "Template Name":"OpenBuddy",
+        "Ps":"<|role|>system<|says|>",
+        "Ss":"<|end|>\n",
+        "Pu":"<|role|>user<|says|>",
+        "Su":"<|end|>\n",
+        "Pa":"<|role|>assistant<|says|>",
+        "Sa":"<|end|>\n",
+        "Example Model":"OpenBuddy\/openbuddy-llama3.3-70b-v24.1-131k"
+    },
+    {
+        "Template Name":"Llama3",
+        "Ps":"<|start_header_id|>system<|end_header_id|>\n\n",
+        "Ss":"<|eot_id|>",
+        "Pu":"<|start_header_id|>user<|end_header_id|>\n\n",
+        "Su":"<|eot_id|>",
+        "Pa":"<|start_header_id|>assistant<|end_header_id|>\n\n",
+        "Sa":"<|eot_id|>",
+        "Example Model":"meta-llama\/Llama-3.3-70B-Instruct"
+    },
+    {
+        "Template Name":"Gemma2",
+        "Ps":"",
+        "Ss":"",
+        "Pu":"<start_of_turn>user\n",
+        "Su":"<end_of_turn>\n",
+        "Pa":"<start_of_turn>model\n",
+        "Sa":"<end_of_turn>\n",
+        "Example Model":"google\/gemma-2-2b-it"
+    },
+    {
+        "Template Name":"DeepSeek",
+        "Ps":"",
+        "Ss":"",
+        "Pu":"<\uff5cUser\uff5c>",
+        "Su":"",
+        "Pa":"<\uff5cAssistant\uff5c>",
+        "Sa":"<\uff5cend\u2581of\u2581sentence\uff5c>",
+        "Example Model":"deepseek-ai\/DeepSeek-R1-Distill-Qwen-7B"
+    },
+    {
+        "Template Name":"Phi-3",
+        "Ps":"<|system|>\n",
+        "Ss":"<|end|>\n",
+        "Pu":"<|user|>\n",
+        "Su":"<|end|>\n",
+        "Pa":"<|assistant|>\n",
+        "Sa":"<|end|>\n",
+        "Example Model":"microsoft\/Phi-3.5-mini-instruct"
+    },
+    {
+        "Template Name":"Phi-4",
+        "Ps":"<|im_start|>system<|im_sep|>",
+        "Ss":"<|im_end|>",
+        "Pu":"<|im_start|>user<|im_sep|>",
+        "Su":"<|im_end|>",
+        "Pa":"<|im_start|>assistant<|im_sep|>",
+        "Sa":"<|im_sep|>",
+        "Example Model":"microsoft\/phi-4"
+    },
+    {
+        "Template Name":"Tulu",
+        "Ps":"<|system|>\n",
+        "Ss":"\n",
+        "Pu":"<|user|>\n",
+        "Su":"\n",
+        "Pa":"<|assistant|>\n",
+        "Sa":"<|end_of_text|>\n",
+        "Example Model":"allenai\/Llama-3.1-Tulu-3-70B-DPO"
+    },
+    {
+        "Template Name":"Alpaca",
+        "Ps":"<\uff5cbegin\u2581of\u2581sentence\uff5c>",
+        "Ss":"-",
+        "Pu":"<\uff5cUser\uff5c>",
+        "Su":"-",
+        "Pa":"<\uff5cAssistant\uff5c>",
+        "Sa":"<\uff5cend\u2581of\u2581sentence\uff5c>",
+        "Example Model":"TareksGraveyard\/Thalassic-Alpha-LLaMa-70B"
+    }
+]
