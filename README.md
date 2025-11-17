@@ -1,8 +1,11 @@
 <p align="center">
-  <img src="assets/logo.png" width="200"/>
+  <img src="assets/logo.png" width="300"/>
 </p>
 
 # Dialogue Injection Attack: Jailbreaking LLMs through Context Manipulation
+![Python](https://img.shields.io/badge/Python-3.12-blue.svg)
+![Ollama](https://img.shields.io/badge/Ollama-0.12.6-brightgreen.svg)
+
 
 This repository contains the official implementation of DIA (Dialogue Injection Attack), a new jailbreak attack paradigm that leverages fabricated dialogue history to enhance the effectiveness of adversarial prompts against large language models (LLMs). Unlike prior jailbreak studies that focus primarily on single-turn interactions or assume the attacker can only modify user inputs, DIA reveals a broader and more powerful attack surface, **the ability to manipulate a model’s historical outputs**.
 
