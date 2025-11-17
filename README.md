@@ -1,19 +1,25 @@
-# DIA
+<p align="center">
+  <img src="assets/logo.png" width="100"/>
+</p>
+
+# DIA (Dialogue Injection Attack)
 
 ## Setup
 
-First, install Ollama
+First, install and serve Ollama
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
+ollama serve
 ```
-or install through [docker](https://hub.docker.com/r/ollama/ollama).
+or serve it through [docker](https://hub.docker.com/r/ollama/ollama).
 
 ```bash
 conda create -n ri python=3.12
 conda activate ri
 cd DIA
-bash install.sh
+chmod a+x install.sh
+./install.sh
 ```
 
 ## Quick Start
@@ -52,12 +58,12 @@ Step 1: Generate inference results
 
 ```bash
 cd tia
-python main.py --model_name_a qwen2:latest --model_name_b llama3:latest --model_name_other gemma2:latest
-python main.py --model_name_a llama3:latest --model_name_b qwen2:latest --model_name_other gemma2:latest
-python main.py --model_name_a gemma2:latest --model_name_b qwen2:latest --model_name_other llama3:latest
-python main.py --model_name_a qwen2:latest --model_name_b gemma2:latest --model_name_other llama3:latest
-python main.py --model_name_a gemma2:latest --model_name_b llama3:latest --model_name_other qwen2:latest
-python main.py --model_name_a llama3:latest --model_name_b gemma2:latest --model_name_other qwen2:latest
+python main.py --model_name_a qwen2:latest --model_name_b llama3:latest --model_name_other gemma2:latest --save_path infer_output_qwen2_llama3.json
+python main.py --model_name_a llama3:latest --model_name_b qwen2:latest --model_name_other gemma2:latest --save_path infer_output_llama3_qwen2.json
+python main.py --model_name_a gemma2:latest --model_name_b qwen2:latest --model_name_other llama3:latest --save_path infer_output_gemma2_qwen2.json
+python main.py --model_name_a qwen2:latest --model_name_b gemma2:latest --model_name_other llama3:latest --save_path infer_output_qwen2_gemma2.json
+python main.py --model_name_a gemma2:latest --model_name_b llama3:latest --model_name_other qwen2:latest --save_path infer_output_gemma2_llama3.json
+python main.py --model_name_a llama3:latest --model_name_b gemma2:latest --model_name_other qwen2:latest --save_path infer_output_llama3_qwen2.json
 ```
 
 Step 2: Compute accuracy
