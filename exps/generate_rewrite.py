@@ -1,6 +1,6 @@
 import argparse
 import os
-from ri.utils import rewrite_instruction, add_suffix
+from di.utils import rewrite_instruction, add_suffix
 from tqdm import tqdm
 
 
@@ -8,6 +8,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_path", type=str, default="data/advbench.txt", help="Path to data file.")
     parser.add_argument("--max_rewrite_tries", type=int, default=9)
+    parser.add_argument("--auxiliary_model", type=str, default="gemma2:27b", help="Auxiliary model for rewriting instructions.")
     args = parser.parse_args()
 
     with open(args.data_path, "r", encoding="utf-8") as file:
@@ -22,7 +23,7 @@ if __name__ == "__main__":
 
         rewritten_instructs = []
         for instruct in tqdm(instructs):
-            rewritten_instructs.append(rewrite_instruction(instruct))
+            rewritten_instructs.append(rewrite_instruction(instruct, auxiliary_model=args.auxiliary_model))
             print("rewritten:\n", rewritten_instructs[-1])
 
         with open(rewritten_data_path, "w", encoding="utf-8") as file:

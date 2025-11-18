@@ -8,6 +8,7 @@ wandb/
 .mypy_cache/
 project-manager/
 backup/
+results/
 
 *_rewritten.json
 *_rewritten.txt

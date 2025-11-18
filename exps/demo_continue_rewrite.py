@@ -6,8 +6,8 @@ from typing import Optional
 from transformers import HfArgumentParser
 from jailbreakeval import JailbreakEvaluator
 
-from ri import ContinueAttacker, AttackConfig, eval_batch
-from ri.utils import (
+from di import ContinueAttacker, AttackConfig, eval_batch
+from di.utils import (
     rewrite_instruction,
     add_suffix,
 )
@@ -47,6 +47,10 @@ class OtherArguments:
         default=False,
         metadata={"help": "Ablate rewritten instructions."},
     )
+    seed: int = field(
+        default=42,
+        metadata={"help": "Random seed."},
+    )
 
 
 def main():
@@ -59,8 +63,6 @@ def main():
         instructs = file.read().split("\n")
         # filter ''
         instructs = list(filter(None, instructs))
-    if 'gpt-' in other_args.target_model and 'mini' not in other_args.target_model:
-        instructs = instructs[:180]
 
     # Load attacker and attack
     attacker = ContinueAttacker(other_args.target_model, attack_args)
@@ -73,8 +75,8 @@ def main():
         responses = attacker.attack(
             instructs, 
             prefix_path=other_args.prefix_path,
-            options = {"num_ctx": 8192, "num_predict": 1024, "seed": 42},
-            seed=42, # For the first run, we ensure the same random seed
+            options = {"num_ctx": 8192, "num_predict": 1024, "seed": other_args.seed},
+            seed=other_args.seed, # For the first run, we ensure the same random seed
         )
 
         # Eval

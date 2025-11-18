@@ -1,6 +1,7 @@
 import copy
 import logging
 import ollama
+import time
 from typing import Optional, Any, Sequence
 from tqdm import tqdm
 
@@ -16,6 +17,7 @@ def eval_batch(
     evaluator: JailbreakEvaluator,
     questions: list[str],
     answers: list[str],
+    sleep_time: float = 0.0,
 ) -> list[bool]:
     results = []
     assert len(questions) == len(answers)
@@ -27,6 +29,8 @@ def eval_batch(
         }
         evaluation_result = evaluator(attempt_to_evaluate)
         results.append(evaluation_result)
+
+        time.sleep(sleep_time)
 
     return results
 

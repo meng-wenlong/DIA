@@ -5,8 +5,8 @@ from typing import Optional
 
 from transformers import HfArgumentParser
 
-from ri import ContinueAttacker, AttackConfig
-from ri.utils import (
+from di import ContinueAttacker, AttackConfig
+from di.utils import (
     rewrite_instruction,
     add_suffix,
 )

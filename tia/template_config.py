@@ -55,9 +55,44 @@ class Gemma2Template(ModelTemplate):
     Sa: str = "<end_of_turn>\n"
 
 
+@dataclass
+class Phi4Template(ModelTemplate):
+    model_name_or_path: str = "microsoft/phi-4"
+    Pu: str = "<|im_start|>user<|im_sep|>"
+    Su: str = "<|im_end|>"
+    Pa: str = "<|im_start|>assistant<|im_sep|>"
+    Sa: str = "<|im_sep|>"
+
+
+@dataclass
+class OpenBuddyTemplate(ModelTemplate):
+    model_name_or_path: str = "OpenBuddy/openbuddy-llama3.3-70b-v24.1-131k"
+    Pu: str = "<|role|>user<|says|>"
+    Su: str = "<|end|>\n"
+    Pa: str = "<|role|>assistant<|says|>"
+    Sa: str = "<|end|>\n"
+
+
+@dataclass
+class MistralTemplate(ModelTemplate):
+    model_name_or_path: str = "mistralai/Mistral-Large-Instruct-2411"
+    Pu: str = "[INST] "
+    Su: str = "[/INST]"
+    Pa: str = " "
+    Sa: str = "</s>"
+
+
 model2template: dict[str, Type[ModelTemplate]] = {
     "qwen2": Qwen2Template,
     "llama3": Llama3Template,
     "gemma2": Gemma2Template,
-    "qwen2.5": Qwen2_5Template
+    "qwen2.5": Qwen2_5Template,
+    "phi4": Phi4Template,
+    "phi4-mini": Phi4Template,
+    "phi3": Phi4Template,
+    "phi3.5": Phi4Template,
+    "openbuddy/openbuddy-llama3.1-8b": OpenBuddyTemplate,
+    "openbuddy/openbuddy-llama3-8b-v21.1-8k": OpenBuddyTemplate,
+    "openbuddy": OpenBuddyTemplate,
+    "mistral": MistralTemplate,
 }

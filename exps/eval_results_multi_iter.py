@@ -2,8 +2,8 @@ import argparse
 import json
 import os
 from jailbreakeval import JailbreakEvaluator
-from ri.eval import eval_batch, OllamaChatService
-from ri.utils import add_suffix
+from di.eval import eval_batch, OllamaChatService
+from di.utils import add_suffix
 
 
 def find_rewritten_files(filepath: str) -> list[str]:

@@ -1,7 +1,6 @@
-conda install pytorch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 pytorch-cuda=12.1 -c pytorch -c nvidia
-
 pip install transformers
 pip install openai
+pip install anthropic
 pip install ollama
 pip install JailbreakEval
 pip install tenacity
@@ -11,7 +10,7 @@ pip install language-tool-python
 pip install sentence-transformers
 pip install evaluate
 
-# Install ri
+# Install di
 mkdir -p $CONDA_PREFIX/etc/conda/activate.d
 echo "export PYTHONPATH=\$PYTHONPATH:$(pwd)/src" >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
 source $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh

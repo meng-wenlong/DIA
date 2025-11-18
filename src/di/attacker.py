@@ -173,13 +173,21 @@ class TaskSolvingAttacker(AbstractAttacker):
         results = []
         logger.warning("Generating prefixes for %d instructions", len(instructs))
         for instruct in tqdm(instructs):
-            prefix, new_q, key_and_alter = generate_prefix(instruct, unharm=unharm)
-            results.append({
-                "instruction": instruct,
-                "prefix": prefix,
-                "new_q": new_q,
-                "key_and_alter": key_and_alter
-            })
+            try:
+                prefix, new_q, key_and_alter = generate_prefix(instruct, unharm=unharm)
+                results.append({
+                    "instruction": instruct,
+                    "prefix": prefix,
+                    "new_q": new_q,
+                    "key_and_alter": key_and_alter
+                })
+            except:
+                results.append({
+                    "instruction": instruct,
+                    "prefix": "I am delight to help you complete your task.",
+                    "new_q": instruct,
+                    "key_and_alter": []
+                })
         
         if save_path:
             os.makedirs(os.path.dirname(save_path), exist_ok=True)

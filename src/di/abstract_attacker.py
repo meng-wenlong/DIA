@@ -2,10 +2,11 @@ import ollama
 import copy
 import logging
 from openai import OpenAI
+from anthropic import Anthropic
 from abc import ABC, abstractmethod
 from typing import Optional
 from tenacity import retry, stop_after_attempt, wait_random_exponential
-from ri.prompts import DEFENSE_SYSTEM_PROMPT, DEFENSE_PROMPT_PATCH, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
+from di.prompts import DEFENSE_SYSTEM_PROMPT, DEFENSE_PROMPT_PATCH, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
 
 
 logger = logging.getLogger(__name__)
@@ -14,16 +15,18 @@ logger = logging.getLogger(__name__)
 class AbstractAttacker(ABC):
     def __init__(self, target_model):
         self.target_model = target_model
+        self.openai_client = None
+        self.anthropic_client = None
         if 'gpt-' in self.target_model:
             self.openai_client = OpenAI()
-        else:
-            self.openai_client = None
+        elif 'claude-' in self.target_model:
+            self.anthropic_client = Anthropic()
 
     @retry(stop=stop_after_attempt(6), wait=wait_random_exponential(multiplier=1, max=60))
     def get_response(
         self, 
         messages,
-        prompt_defense_method: Optional[str] = None, # ['prompt_patch', 'system_prompt', 'bergeron']
+        prompt_defense_method: Optional[str] = None, # ['prompt_patch', 'system_prompt', 'bergeron', 'canonicalize']
         bergeron_secondary_model: Optional[str] = None,
         options: Optional[dict] = None,
         **kwargs
@@ -66,6 +69,12 @@ class AbstractAttacker(ABC):
                     logger.debug("Generating conscience...")
                     sanitized = make_conscience_prompt(processed_messages[-1]['content'], input_critique)
                     processed_messages[-1]['content'] = sanitized
+            elif prompt_defense_method == 'canonicalize':
+                combined_content = ''
+                for msg in messages:
+                    combined_content += msg['role'] + '\n' + msg['content'] + '\n\n'
+                combined_content = combined_content.strip()
+                processed_messages = [{'role': 'user', 'content': combined_content}]
 
             messages = processed_messages
 
@@ -76,6 +85,27 @@ class AbstractAttacker(ABC):
                 **kwargs
             )
             return response.choices[0].message.content
+        elif self.anthropic_client:
+            if 'max_tokens' not in kwargs:
+                kwargs['max_tokens'] = 1024
+            kwargs.pop('seed', None)
+
+            # Handle system messages
+            anthropic_messages = copy.deepcopy(messages)
+            if anthropic_messages[0]['role'] == 'system':
+                kwargs['system'] = anthropic_messages[0]['content']
+                anthropic_messages = anthropic_messages[1:]
+            
+            for msg in anthropic_messages:
+                if msg['role'] == 'system':
+                    msg['role'] = 'user'  # Anthropic does not have system role
+
+            response = self.anthropic_client.messages.create(
+                model=self.target_model,
+                messages=anthropic_messages,
+                **kwargs
+            )
+            return response.content[0].text
 
         response = ollama.chat(
             model=self.target_model,
