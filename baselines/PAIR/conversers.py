@@ -5,7 +5,7 @@ import logging
 from typing import Optional
 from language_models import GPT, Ollama
 from config import ATTACK_TEMP, TARGET_TEMP, ATTACK_TOP_P, TARGET_TOP_P
-from ri.prompts import DEFENSE_PROMPT_PATCH_LLAMA2_2, DEFENSE_SYSTEM_PROMPT, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
+from di.prompts import DEFENSE_PROMPT_PATCH_LLAMA2_2, DEFENSE_SYSTEM_PROMPT, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
 
 
 logger = logging.getLogger(__name__)

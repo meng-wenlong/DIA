@@ -9,8 +9,8 @@ from openai import OpenAI
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 from tqdm import tqdm
 
-from ri.utils import add_suffix
-from ri.prompts import DEFENSE_PROMPT_PATCH, DEFENSE_SYSTEM_PROMPT, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
+from di.utils import add_suffix
+from di.prompts import DEFENSE_PROMPT_PATCH, DEFENSE_SYSTEM_PROMPT, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
 
 
 logger = logging.getLogger(__name__)

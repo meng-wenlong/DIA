@@ -6,7 +6,7 @@ from renellm import rene
 from typing import Optional
 from tqdm import tqdm
 
-from ri.utils import add_suffix
+from di.utils import add_suffix
 
 
 @dataclass

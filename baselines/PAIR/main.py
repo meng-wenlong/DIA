@@ -196,7 +196,6 @@ def main():
     # pair_main_single(pair_args, goal=goal, target_str=target_str)
 
     data = read_data(exp_args.data_path)
-    data = data[:120]
     prefix = read_data(exp_args.prefix_path)
 
     prefix_dict = {item['instruction']: item for item in prefix}

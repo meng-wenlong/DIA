@@ -3,7 +3,7 @@ import json
 import os
 from tqdm import tqdm
 from jailbreakeval import JailbreakEvaluator
-from ri.eval import OllamaChatService
+from di.eval import OllamaChatService
 
 
 def main() -> None:

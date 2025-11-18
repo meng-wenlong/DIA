@@ -17,7 +17,7 @@ from attack import (
     load_cache,
 )
 
-from ri.prompts import DEFENSE_SYSTEM_PROMPT, DEFENSE_PROMPT_PATCH, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
+from di.prompts import DEFENSE_SYSTEM_PROMPT, DEFENSE_PROMPT_PATCH, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
 
 
 logger = logging.getLogger(__name__)

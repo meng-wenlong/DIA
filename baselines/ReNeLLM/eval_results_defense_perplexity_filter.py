@@ -3,8 +3,8 @@ import json
 import os
 import evaluate
 from jailbreakeval import JailbreakEvaluator
-from ri.eval import eval_batch, OllamaChatService
-from ri.utils import add_suffix
+from di.eval import eval_batch, OllamaChatService
+from di.utils import add_suffix
 from typing import Optional
 
 

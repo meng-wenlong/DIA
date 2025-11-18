@@ -9,8 +9,8 @@ from tenacity import retry, stop_after_attempt, wait_random_exponential
 from tqdm import tqdm
 from typing import Optional
 
-from ri.utils import add_suffix
-from ri.prompts import DEFENSE_PROMPT_PATCH_LLAMA2_2, DEFENSE_SYSTEM_PROMPT, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
+from di.utils import add_suffix
+from di.prompts import DEFENSE_PROMPT_PATCH_LLAMA2_2, DEFENSE_SYSTEM_PROMPT, PROMPT_CRITIQUE_PROMPT, CONSCIENCE_DISCLAIMER_PROMPT
 
 
 logger = logging.getLogger(__name__)
@@ -127,8 +127,6 @@ def main():
         instructs = f.readlines()
         # filter ''
         instructs = list(filter(lambda x: x != '', instructs))
-    if 'gpt-4' in args.target_model and 'mini' not in args.target_model:
-        instructs = instructs[:180]
 
     # try to get system message
     if 'gpt-' not in args.target_model and 'system' in ollama.show(args.target_model):
