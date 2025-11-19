@@ -113,7 +113,7 @@ If you want to do more, here are argument explaination for advanced users.
 - `max_rewrite_tries (int)`: Max times of rewrite. Default to 9, which means for each instruction we will rewrite it 9 times, and query the victim model 10 times. It set to 0, will diable rewrite.
 - `output_path (str)`: Path to save model responses.
 - `ablation_rewritten (bool)`: Whether to apply rewritten ablation. If True, DIA will query the victim model multi-times but does not rewrite the original instruction.
-- `seed`: Random seed. Only effective for the first round.
+- `seed (int)`: Random seed. Only effective for the first round.
 
 You can also evaluate after performing attacks using `eval_results_multi_iter.py`.
 
